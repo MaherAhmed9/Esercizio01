@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Day - Istituto Formazione</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 0;
+            font-size: 1rem;
+        }
+
+        .info-item span {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 20px;
+        }
+
+        section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 24px;
+            text-align: center;
+            color: #2d3748;
+        }
+
+        /* Why Participate */
+        .why-participate {
+            background: #f7fafc;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #667eea;
+        }
+
+        .card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        /* Courses */
+        .courses-list {
+            background: white;
+        }
+
+        .course-item {
+            background: #f7fafc;
+            padding: 20px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .course-item h3 {
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .course-item p {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* How it Works */
+        .how-it-works {
+            background: #f7fafc;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 24px;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 16px;
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: #2d3748;
+        }
+
+        .step-content p {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* Target Audience */
+        .target-list {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .target-list li {
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #48bb78;
+        }
+
+        /* Form */
+        .registration-form {
+            background: white;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        /* Confirmation */
+        .confirmation {
+            background: #f7fafc;
+            text-align: center;
+        }
+
+        .confirmation-box {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .confirmation-box ul {
+            list-style: none;
+            margin-top: 24px;
+            text-align: left;
+        }
+
+        .confirmation-box li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .confirmation-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* FAQ */
+        .faq {
+            background: white;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: #f7fafc;
+            font-weight: 600;
+            color: #2d3748;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            background: white;
+            color: #718096;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            margin-top: 24px;
+        }
+
+        .footer-social a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+        }
+
+        /* Desktop Adjustments */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .info-box {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .info-item {
+                flex-direction: column;
+            }
+
+            .btn-primary {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+
+            .card-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .card {
+                margin-bottom: 0;
+            }
+
+            .form-container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Open Day Istituto Formazione</h1>
+            <p>Scopri i nostri corsi, incontra i docenti, fai domande dal vivo</p>
+            
+            <div class="info-box">
+                <div class="info-item">
+                    <span>📅</span>
+                    <div>15 Marzo 2026</div>
+                </div>
+                <div class="info-item">
+                    <span>⏰</span>
+                    <div>10:00 - 13:00</div>
+                </div>
+                <div class="info-item">
+                    <span>💻</span>
+                    <div>Online e in Sede</div>
+                </div>
+            </div>
+            
+            <a href="#iscrizione" class="btn-primary">Iscriviti gratuitamente</a>
+        </div>
+    </section>
+
+    <!-- Why Participate -->
+    <section class="why-participate">
+        <div class="container">
+            <h2>Perché partecipare all'Open Day</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Conosci i corsi e il metodo</h3>
+                    <p>Scopri in dettaglio i programmi formativi e la nostra metodologia didattica innovativa</p>
+                </div>
+                <div class="card">
+                    <h3>Parla con docenti e studenti</h3>
+                    <p>Incontra chi insegna e chi sta già vivendo l'esperienza formativa</p>
+                </div>
+                <div class="card">
+                    <h3>Chiarisci dubbi su iscrizione e carriera</h3>
+                    <p>Ricevi informazioni su modalità di iscrizione e sbocchi professionali</p>
+                </div>
+                <div class="card">
+                    <h3>Capisci se è il percorso giusto per te</h3>
+                    <p>Valuta se la nostra offerta formativa corrisponde ai tuoi obiettivi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="courses-list">
+        <div class="container">
+            <h2>I corsi che presenteremo</h2>
+            
+            <div class="course-item">
+                <h3>Sviluppo Web Full Stack</h3>
+                <p>Impara a creare applicazioni web moderne con tecnologie front-end e back-end</p>
+            </div>
+            
+            <div class="course-item">
+                <h3>Digital Marketing & Social Media</h3>
+                <p>Strategie di comunicazione digitale per aziende e professionisti</p>
+            </div>
+            
+            <div class="course-item">
+                <h3>Data Science & Analytics</h3>
+                <p>Analisi dati, machine learning e business intelligence per decisioni data-driven</p>
+            </div>
+            
+            <div class="course-item">
+                <h3>UX/UI Design</h3>
+                <p>Progettazione di esperienze utente e interfacce digitali centrate sull'utente</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>Come funziona l'Open Day</h2>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Registrazione</h3>
+                    <p>Compila il form di iscrizione e ricevi la conferma via email</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Presentazione dei corsi</h3>
+                    <p>Scopri i programmi formativi con presentazioni dettagliate</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Q&A dal vivo</h3>
+                    <p>Fai domande direttamente ai docenti e al team didattico</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Orientamento personalizzato</h3>
+                    <p>Ricevi consulenza individuale sul percorso più adatto a te</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section>
+        <div class="container">
+            <h2>È l'Open Day giusto per me?</h2>
+            <ul class="target-list">
+                <li>Studenti post-diploma che vogliono specializzarsi</li>
+                <li>Universitari indecisi sul proprio percorso</li>
+                <li>Professionisti in cerca di riqualificazione</li>
+                <li>Chi vuole cambiare settore e acquisire nuove competenze</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="registration-form" id="iscrizione">
+        <div class="container">
+            <h2>Iscriviti all'Open Day</h2>
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label for="nome">Nome e Cognome *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Telefono (opzionale)</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="corso">Corso di interesse</label>
+                        <select id="corso" name="corso">
+                            <option value="">Seleziona un corso</option>
+                            <option value="web">Sviluppo Web Full Stack</option>
+                            <option value="marketing">Digital Marketing & Social Media</option>
+                            <option value="data">Data Science & Analytics</option>
+                            <option value="design">UX/UI Design</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Prenota il tuo posto</button>
+                    
+                    <p class="form-note">Posti limitati · Iscrizione gratuita</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation -->
+    <section class="confirmation">
+        <div class="container">
+            <h2>Cosa succede dopo l'iscrizione</h2>
+            <div class="confirmation-box">
+                <p>Una volta completata l'iscrizione:</p>
+                <ul>
+                    <li>✉️ Riceverai un'email di conferma con tutti i dettagli</li>
+                    <li>⏰ Ti invieremo un promemoria il giorno prima dell'evento</li>
+                    <li>🔗 Riceverai il link di accesso per partecipare online</li>
+                    <li>📍 Troverai le indicazioni per raggiungere la sede</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>Domande frequenti</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">È gratuito?</div>
+                <div class="faq-answer">Sì, la partecipazione all'Open Day è completamente gratuita e senza impegno.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Posso partecipare online?</div>
+                <div class="faq-answer">Assolutamente sì! L'evento sarà trasmesso in streaming per chi non può essere presente in sede.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Devo avere requisiti specifici?</div>
+                <div class="faq-answer">No, l'Open Day è aperto a tutti. Non sono richiesti requisiti particolari per partecipare.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Posso fare domande durante l'evento?</div>
+                <div class="faq-answer">Certamente! Ci sarà una sessione dedicata al Q&A e potrai anche richiedere un colloquio individuale.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Cosa devo portare?</div>
+                <div class="faq-answer">Nulla di specifico. Porta solo la tua curiosità e le domande che vuoi fare!</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Istituto Formazione</div>
+            
+            <div class="footer-links">
+                <a href="#">Contatti</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            
+            <p style="margin-top: 24px; font-size: 0.85rem; opacity: 0.8;">
+                © 2026 Istituto Formazione. Tutti i diritti riservati.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
